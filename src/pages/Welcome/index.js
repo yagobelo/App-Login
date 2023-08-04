@@ -1,25 +1,41 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
+import * as Animatable from "react-native-animatable";
+
+import { useNavigation } from "@react-navigation/native";
+
 export default function Welcome() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.containerLogo}>
-        <Image
+        <Animatable.Image
+          animation={"flipInY"}
           source={require("../../assets/Logo.png")}
           style={{ width: "100%" }}
           resizeMode="contain"
         />
       </View>
 
-      <View style={styles.containerForm}>
+      <Animatable.View
+        delay={800}
+        animation={"fadeInUp"}
+        style={styles.containerForm}
+      >
         <Text style={styles.title}>Uma Tela de Login Simples e Pratica!</Text>
         <Text style={styles.text}>Faça o login para começar!</Text>
 
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Entrar</Text>
+          <Text
+            style={styles.textButton}
+            onPress={() => navigation.navigate("SignIn")}
+          >
+            Entrar
+          </Text>
         </TouchableOpacity>
-      </View>
+      </Animatable.View>
     </View>
   );
 }
