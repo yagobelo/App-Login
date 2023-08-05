@@ -2,17 +2,13 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
-
 import * as Animatable from "react-native-animatable";
-import { useNavigation } from "@react-navigation/native";
 
-export default function SignIn() {
-  const navigation = useNavigation();
-
+export default function Register() {
   return (
     <View style={styles.container}>
       <Animatable.View
@@ -20,30 +16,24 @@ export default function SignIn() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Bem-Vindo(a)</Text>
+        <Text style={styles.textHeader}>Cadastrar nova conta</Text>
       </Animatable.View>
 
       <Animatable.View animation={"fadeInUp"} style={styles.containerForm}>
+        <Text style={styles.title}>Nome de usuario</Text>
+        <TextInput style={styles.input} placeholder="Ex: Usuario01"></TextInput>
+
         <Text style={styles.title}>Email</Text>
         <TextInput
-          placeholder="Ex: app@gmail.com"
           style={styles.input}
+          placeholder="Ex: usuario@gmail.com"
         ></TextInput>
 
         <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Senha " style={styles.input}></TextInput>
+        <TextInput style={styles.input} placeholder="Senha"></TextInput>
 
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Entrar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.buttonRegister}>
-          <Text
-            style={styles.textButtonRegister}
-            onPress={() => navigation.navigate("Register")}
-          >
-            Não possui uma conta? Cadastrar-se
-          </Text>
+          <Text style={styles.textButton}>Cadastrar</Text>
         </TouchableOpacity>
       </Animatable.View>
     </View>
@@ -59,10 +49,10 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     marginStart: 20,
   },
-  message: {
+  textHeader: {
+    color: "white",
     fontSize: 30,
     fontWeight: "bold",
-    color: "white",
   },
   containerForm: {
     backgroundColor: "white",
@@ -96,12 +86,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#264653",
     fontWeight: "bold",
-  },
-  buttonRegister: {
-    marginTop: 15,
-    alignSelf: "center",
-  },
-  textButtonRegister: {
-    color: "#a1a1a1",
   },
 });
